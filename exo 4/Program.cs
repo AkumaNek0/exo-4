@@ -4,16 +4,9 @@ namespace exo_4
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Phrase(int RNumSuj, int RNumV, int RNumComp)
         {
-            
-            Random R = new Random();
-            int RNumSuj = 0;
-            int RNumV = 0;
-            int RNumComp = 0;
-            int WrittenLine = 0;
-
-            string[] sujets = new string[] 
+            string[] sujets = new string[]
             {
                 "Un ours",
                 "Un GAMER",
@@ -54,14 +47,22 @@ namespace exo_4
                 "une aiguille",
                 "une bonne soupe maison"
             };
+            Random R = new Random();
+            RNumSuj = R.Next(0, 10);
+            RNumV = R.Next(0, 10);
+            RNumComp = R.Next(0, 10);
+            Console.WriteLine(sujets[RNumSuj] + verbe[RNumV] + complement[RNumComp]);
 
-            void Phrase()
-            {
-                RNumSuj = R.Next(0, 10);
-                RNumV = R.Next(0, 10);
-                RNumComp = R.Next(0, 10);
-                Console.WriteLine(sujets[RNumSuj] + verbe[RNumV] + complement[RNumComp]);
-            }
+        }
+
+        static void Main(string[] args)
+        {
+            
+            //Random R = new Random();
+            int RNumSuj = 0;
+            int RNumV = 0;
+            int RNumComp = 0;
+            int WrittenLine = 0;
 
             Console.WriteLine("Choisi le nombre de phrase a générer : ");
             string RoughAnswer = Console.ReadLine();
@@ -72,8 +73,21 @@ namespace exo_4
 
                 while (WrittenLine < NumbLine)
                 {
-                    Phrase();
+                    Phrase(RNumSuj, RNumV, RNumComp);
                     WrittenLine = WrittenLine + 1;
+                }
+
+                Console.WriteLine("Recommence oui ou non?");
+                string restart = Console.ReadLine();
+
+                if (restart == "oui")
+                {
+                    Console.Clear();
+                    Main(args);
+                }
+                else
+                {
+
                 }
             }
             catch
